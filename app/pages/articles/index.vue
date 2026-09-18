@@ -12,8 +12,6 @@ console.log('ARTICLES CHARGÉS:', articles.value)
 <template>
   <div>
     <h1>Articles</h1>
-    <NuxtLink v-for="article in articles" :key="article.path" :to="article.path">
-      {{ article.title }}
-    </NuxtLink>
+    <ArticlesTiles :articles="articles" />
   </div>
 </template>   

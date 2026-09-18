@@ -22,15 +22,30 @@ avec Nom prenom citation: "L’ingénierie comme art, la technologie comme toile
 
 #### Architecture technique
 
-- [x] Mise en place infra Vercel
-- [x] Mise en place infra Nuxt
-- [x] Création du contenu main HTML - pour le moment juste la page about - a retravailler mais pas grave
-- [x] Division en template vue
-- [x] Création du system de publication en articles
-- [ ] integration technique du formulaire de contact (cf ce que propose nuxt là dessus)
-- [ ] ajout i18n pour la traduction (voir nuxt qui integre ça par defaut à prioris)
-- [ ] traduction des articles si necessaire (plus tard ?)
-- [ ] animation blending de couleurs basique entre page pour check le system
+* infra global:
+    - [x] Mise en place infra Vercel
+    - [x] Mise en place infra Nuxt
+    - [x] Création du contenu main HTML - pour le moment juste la page about - a retravailler mais pas grave
+    - [x] Division en template vue
+    - [x] Création du system de publication en articles
+    - [ ] setup dev / prod environment (cf nuxt)
+
+* I18n - internationalisatino:
+    - [ ] ajout i18n pour la traduction (voir nuxt qui integre ça par defaut à prioris) - cf nuxt > component > [i18n](https://ui.nuxt.com/docs/components/locale-select)
+    - [ ] traduction des articles si necessaire (plus tard ?)
+
+* Navigation :
+    - [ ] nav - cf nuxt > component > [nav]()
+    - [ ] file d'ariane - cf nuxt > component > [breadcrumb](https://ui.nuxt.com/docs/components/breadcrumb)
+    - [ ] navigation dans un article: cf nuxt > component > [article content nav](https://ui.nuxt.com/docs/components/content-toc)
+    - [ ] research bar - cf nuxt > component > [search bar](https://ui.nuxt.com/docs/components/content-search) + content search button
+
+* contact form:
+    - [ ] integration technique du formulaire de contact (cf ce que propose nuxt là dessus) - cf nuxt component > contact forms elements
+
+* enluminures:
+    - [ ] color mode switcher - cf nuxt > component > [color mode switcher](https://ui.nuxt.com/docs/components/color-mode-button)
+    - [ ] animation blending de couleurs basique entre page pour check le system
 
 #### Design 3D
 
