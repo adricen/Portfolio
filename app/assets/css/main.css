@@ -1,2 +1,2 @@
-
-@import url('./tailwind.css');
+@import "tailwindcss";
+@import "@nuxt/ui";

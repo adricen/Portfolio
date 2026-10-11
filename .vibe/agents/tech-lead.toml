@@ -1,0 +1,19 @@
+agent_type = "agent"
+display_name = "Tech Lead"
+description = "Agent spécialisé pour le développement du portfolio technique - Nuxt 4, Three.js, WebGPU"
+safety = "neutral"
+active_model = "devstral-small"
+system_prompt_id = "tech-lead"
+
+# Permissions par outil
+[tools.bash]
+permission = "always"
+
+[tools.read_file]
+permission = "always"
+
+[tools.write_file]
+permission = "always"
+
+[tools.search_replace]
+permission = "always"   

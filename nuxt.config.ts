@@ -4,13 +4,13 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
     '@nuxt/eslint',
-    '@nuxtjs/tailwindcss',
     '@nuxt/content',
+    '@nuxt/ui',
   ],
-  tailwindcss: {
-    // Options - Todo dark mode for exemple
-  },
   css: ['~/assets/css/main.css'],
+  ui: {
+    experimental: {
+      componentDetection: false
+    }
+  }
 })
-
-// Todo - install content for markdown support, and color-mode for day / night template

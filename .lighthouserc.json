@@ -1,0 +1,68 @@
+{
+  "ci": {
+    "collect": {
+      "url": [
+        "http://localhost:3000",
+        "http://localhost:3000/projets",
+        "http://localhost:3000/taran-core",
+        "http://localhost:3000/ia",
+        "http://localhost:3000/a-propos",
+        "http://localhost:3000/contact"
+      ],
+      "numberOfRuns": 3,
+      "settings": {
+        "preset": "desktop",
+        "chromeFlags": "--no-sandbox && --disable-dev-shm-usage",
+        "emulatedFormFactor": "desktop",
+        "throttling": {
+          "rttMs": 40,
+          "throughputKbps": 10 * 1024,
+          "cpuSlowdownMultiplier": 4,
+          "requestLatencyMs": 0,
+          "downloadThroughputKbps": 0,
+          "uploadThroughputKbps": 0
+        },
+        "screenEmulation": {
+          "mobile": false,
+          "width": 1920,
+          "height": 1080,
+          "deviceScaleFactor": 1,
+          "disabled": false
+        }
+      }
+    },
+    "assert": {
+      "preset": "lighthouse:recommended",
+      "assertions": {
+        "performance": ["error", {"minScore": 0.97}],
+        "best-practices": ["error", {"minScore": 0.97}],
+        "accessibility": ["error", {"minScore": 0.9}],
+        "seo": ["error", {"minScore": 0.9}],
+        "pwa": "off",
+        
+        // Assertions personnalisées pour le budget de performance
+        "first-contentful-paint": ["error", {"maxNumericValue": 1.8}],
+        "largest-contentful-paint": ["error", {"maxNumericValue": 2.5}],
+        "first-input-delay": ["error", {"maxNumericValue": 100}],
+        "cumulative-layout-shift": ["error", {"maxNumericValue": 0.1}],
+        "total-byte-weight": ["error", {"maxNumericValue": 2000}], // 2 Mo en Ko
+        "speed-index": ["error", {"maxNumericValue": 1.5}]
+      }
+    },
+    "upload": {
+      "target": "temporary-public-storage",
+      "outputMode": "all"
+    }
+  },
+  
+  // Configuration pour les tests locaux (optionnelle)
+  "extends": "lighthouse:default",
+  "settings": {
+    "output": ["html", "json"],
+    "onlyCategories": ["performance", "best-practices", "accessibility", "seo"],
+    "formFactor": "desktop",
+    "screenEmulation": {
+      "disabled": true
+    }
+  }
+}

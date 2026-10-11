@@ -35,7 +35,7 @@ avec Nom prenom citation: "L’ingénierie comme art, la technologie comme toile
     - [ ] traduction des articles si necessaire (plus tard ?)
 
 * Navigation :
-    - [ ] nav - cf nuxt > component > [nav]()
+    - [x] nav - cf nuxt > component > [nav]()
     - [ ] file d'ariane - cf nuxt > component > [breadcrumb](https://ui.nuxt.com/docs/components/breadcrumb)
     - [ ] navigation dans un article: cf nuxt > component > [article content nav](https://ui.nuxt.com/docs/components/content-toc)
     - [ ] research bar - cf nuxt > component > [search bar](https://ui.nuxt.com/docs/components/content-search) + content search button
