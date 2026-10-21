@@ -1,31 +1,20 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue'
-import { createSimpleScene, type ThreeScene } from '../../utils/three/scene'
-
-const canvasRef = ref<HTMLCanvasElement | null>(null)
-let threeScene: ThreeScene | null = null
-
-onMounted(async () => {
-  if (!canvasRef.value) return
-
-  try {
-    // Créer la scène avec une couleur rouge
-    threeScene = await createSimpleScene({
-      canvas: canvasRef.value,
-      backgroundColor: 0xff0000, // Rouge
-      antialias: true,
-      powerPreference: 'high-performance'
-    })
-  } catch (error) {
-    console.error('Failed to initialize Three.js scene:', error)
-  }
-})
-
-onBeforeUnmount(() => {
-  // Nettoyer la scène
-  threeScene?.dispose()
-  threeScene = null
-})
+    const canvas = useTemplateRef<HTMLCanvasElement>('canvasRef')
+    const ctx = ref<CanvasRenderingContext2D | null>(null);
+    onMounted(() => {
+        if (canvas.value) {
+            ctx.value = canvas.value.getContext('2d');
+            if (ctx.value) {
+                // Dessiner un fond rouge pour tester
+                ctx.value.fillStyle = '#142020';
+                ctx.value.fillRect(0, 0, canvas.value.width, canvas.value.height);
+                window.requestAnimationFrame(() => {
+                    canvas.value?.setAttribute('data-loaded', 'true');
+                });
+                console.log('✅ Background canvas initialized');
+            }
+        }
+    });
 </script>
 
 <template>
@@ -45,5 +34,12 @@ onBeforeUnmount(() => {
   height: 100vh;
   z-index: -1;
   pointer-events: none;
+  /* Empêcher le rendu pendant le chargement */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.background-canvas[data-loaded="true"] {
+  opacity: 1;
 }
 </style>

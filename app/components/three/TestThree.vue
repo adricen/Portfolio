@@ -1,69 +1,34 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { createBaseScene, type ThreeScene } from '../../utils/three/scene'
 
 const canvasRef = ref<HTMLCanvasElement | null>(null)
-let renderer: any = null
-let scene: any = null
-let camera: any = null
+let threeScene: ThreeScene | null = null
 
 onMounted(async () => {
   if (!canvasRef.value) return
 
   try {
-    // Import dynamique de THREE
-    const THREE = await import('three')
+    // Utiliser createBaseScene avec WebGPU si disponible
+    threeScene = await createBaseScene({
+      canvas: canvasRef.value,
+      backgroundColor: 0x00ff00, // Vert pour le test
+      antialias: true,
+      powerPreference: 'high-performance',
+      maxPixelRatio: 2 // Limiter à 2 pour éviter le sur-rendu
+    })
     
-    console.log('✅ Three.js loaded successfully:', THREE)
-    console.log('✅ WebGLRenderer available:', !!THREE.WebGLRenderer)
-    
-    // Créer une scène simple
-    scene = new THREE.Scene()
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
-    camera.position.z = 5
-    
-    // Créer le renderer avec fallback WebGPU -> WebGL2
-    const WebGPURenderer = (THREE as any).WebGPURenderer
-    
-    if (WebGPURenderer) {
-      try {
-        renderer = new WebGPURenderer({ antialias: true, canvas: canvasRef.value })
-        console.log('✅ WebGPU renderer created')
-      } catch (e) {
-        renderer = new THREE.WebGLRenderer({ antialias: true, canvas: canvasRef.value })
-        console.log('✅ WebGL renderer created (fallback)')
-      }
-    } else {
-      renderer = new THREE.WebGLRenderer({ antialias: true, canvas: canvasRef.value })
-      console.log('✅ WebGL renderer created (WebGPU not available)')
-    }
-    
-    renderer.setSize(window.innerWidth, window.innerHeight)
-    renderer.setClearColor(0x00ff00) // Vert pour le test
-    
-    // Animation simple
-    const animate = () => {
-      requestAnimationFrame(animate)
-      renderer.render(scene, camera)
-    }
-    animate()
-    
-    console.log('✅ Three.js scene initialized successfully!')
+    console.log('✅ Test scene initialized with renderer:', 
+      threeScene.renderer.constructor.name)
     
   } catch (error) {
-    console.error('❌ Failed to initialize Three.js:', error)
+    console.error('❌ Failed to initialize test scene:', error)
   }
 })
 
 onBeforeUnmount(() => {
-  if (renderer) {
-    renderer.dispose()
-  }
-  if (scene) {
-    scene.traverse((obj: any) => {
-      if (obj.geometry) obj.geometry.dispose()
-      if (obj.material) obj.material.dispose()
-    })
-  }
+  threeScene?.dispose()
+  threeScene = null
 })
 </script>
 

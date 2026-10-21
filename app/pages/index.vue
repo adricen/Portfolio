@@ -1,8 +1,8 @@
 <template>
-  <main>
+  <content>
     <h1>Mon site</h1>
     <ArticlesTiles />
-  </main>
+  </content>
 </template>
 
 <script setup lang="ts">

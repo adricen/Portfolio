@@ -1,30 +1,31 @@
 <template>
-  <BackgroundCanvas />
   <UApp>
-    <UHeader>
+    <!-- <UHeader> -->
       <!-- Hero / Title -->
-      <template #left>
+      <!-- <template #left>
         <NuxtLink to="/" class="flex items-center gap-2 text-xl font-bold">
           <span class="text-highlighted">Portfolio</span>
         </NuxtLink>
-      </template>
+      </template> -->
 
       <!-- Navigation - DIRECTEMENT dans UHeader, pas dans un slot -->
-      <UNavigationMenu 
+      <!-- <UNavigationMenu 
         :items="navItems" 
         orientation="horizontal"
         class="w-full"
-      />
+      /> -->
 
       <!-- Right actions -->
-      <template #right>
+      <!-- <template #right>
         <UColorModeButton />
       </template>
-    </UHeader>
-
-    <UMain>
-      <NuxtPage />
-    </UMain>
+    </UHeader> -->
+    <NuxtLayout name="hud">
+      <UMain>
+        <NuxtPage />
+        <BackgroundCanvas />
+      </UMain>
+    </NuxtLayout>
 
     <AppFooter />
   </UApp>
@@ -34,6 +35,7 @@
 import AppFooter from './components/AppFooter.vue'
 import BackgroundCanvas from './components/three/BackgroundCanvas.vue'
 import type { NavigationMenuItem } from '@nuxt/ui'
+
 
 const navItems: NavigationMenuItem[] = [
   {
@@ -55,6 +57,11 @@ const navItems: NavigationMenuItem[] = [
     label: 'Contact',
     icon: 'i-heroicons-envelope',
     to: '/contact'
+  },
+  {
+    label: 'TestWgpuœ',
+    icon: 'i-heroicons-envelope',
+    to: '/test-webgpu-shader'
   }
 ]
 </script>
