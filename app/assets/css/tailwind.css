@@ -2,6 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-@theme {
-    --spacing-hud: 10;
-}

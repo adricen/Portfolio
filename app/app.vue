@@ -1,33 +1,33 @@
 <template>
   <UApp>
     <!-- <UHeader> -->
-      <!-- Hero / Title -->
-      <!-- <template #left>
+    <!-- Hero / Title -->
+    <!-- <template #left>
         <NuxtLink to="/" class="flex items-center gap-2 text-xl font-bold">
           <span class="text-highlighted">Portfolio</span>
         </NuxtLink>
       </template> -->
 
-      <!-- Navigation - DIRECTEMENT dans UHeader, pas dans un slot -->
-      <!-- <UNavigationMenu 
+    <!-- Navigation - DIRECTEMENT dans UHeader, pas dans un slot -->
+    <!-- <UNavigationMenu 
         :items="navItems" 
         orientation="horizontal"
         class="w-full"
       /> -->
 
-      <!-- Right actions -->
-      <!-- <template #right>
+    <!-- Right actions -->
+    <!-- <template #right>
         <UColorModeButton />
       </template>
     </UHeader> -->
     <NuxtLayout name="hud">
       <UMain>
         <NuxtPage />
-        <BackgroundCanvas />
       </UMain>
     </NuxtLayout>
 
     <AppFooter />
+    <BackgroundCanvas />
   </UApp>
 </template>
 

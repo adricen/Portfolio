@@ -1,2 +1,7 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
+
+@theme {
+  --hud-border: 10px;
+  --hud-border-double: 20px
+}
